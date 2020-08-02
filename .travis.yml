@@ -12,12 +12,12 @@ script:
 after_success:
     - docker build -t fernandobarsan/multi-client ./client
     - docker build -t fernandobarsan/multi-nginx ./nginx
-    - docker build -t fernandobarsan/multi-server ./services
+    - docker build -t fernandobarsan/multi-server ./server
     - docker build -t fernandobarsan/multi-worker ./worker
     #Log in to the docker CI
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
     # take those images and push them to docker 
     - docker push fernandobarsan/multi-client
     - docker push fernandobarsan/multi-nginx
-    - docker push fernandobarsan/multi-services
+    - docker push fernandobarsan/multi-server
     - docker push fernandobarsan/multi-worker
